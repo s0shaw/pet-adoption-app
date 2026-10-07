@@ -1,0 +1,16 @@
+{
+  "name": "petadoption-ui",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "author": "s0shaw",
+  "description": "Evcil Hayvan Sahiplendirme Portalı",
+  "main": "main.js",
+  "scripts": {
+    "prestart": "dotnet build ../api/PetAdoption.Api -c Release -o ../api/out --nologo -v q",
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^44.6.0"
+  }
+}

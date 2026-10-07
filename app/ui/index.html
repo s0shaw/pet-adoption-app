@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src http://127.0.0.1:*; style-src 'self'; img-src 'self' data:">
+  <title>Evcil Hayvan Sahiplendirme Portalı</title>
+  <link rel="stylesheet" href="vendor/pico.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="top">
+      <h1>🐾 Evcil Hayvan Sahiplendirme Portalı</h1>
+      <button id="logout" class="secondary outline" hidden>Çıkış</button>
+    </header>
+
+    <p id="message" role="status"></p>
+
+    <section id="view-login">
+      <form id="login-form">
+        <fieldset>
+          <legend>Rol</legend>
+          <label><input type="radio" name="role" value="admin" required> Admin</label>
+          <label><input type="radio" name="role" value="adoptee"> Sahiplenen</label>
+          <label><input type="radio" name="role" value="adopter"> Sahiplendiren</label>
+        </fieldset>
+        <label>Kullanıcı Adı / Ad Soyad
+          <input id="username" type="text" autocomplete="off">
+        </label>
+        <label>Şifre (yalnızca admin)
+          <input id="password" type="password" autocomplete="off">
+        </label>
+        <small>Admin dışındaki kullanıcılar sadece ad soyad girerek giriş yapar.</small>
+        <button type="submit">Giriş</button>
+      </form>
+    </section>
+
+    <section id="view-adopter" hidden>
+      <h2>Sahiplendirici Hayvan Kayıt</h2>
+      <form id="adopter-form">
+        <div class="grid">
+          <label>İsim Soyisim <input name="ownerName" type="text" id="adopter-name"></label>
+          <label>Şehir <input name="city" type="text"></label>
+          <label>Tel No <input name="phone" type="tel"></label>
+        </div>
+        <div class="grid">
+          <label>Hayvanın İsmi <input name="petName" type="text"></label>
+          <label>Tür <input name="petType" type="text" placeholder="Kedi, Köpek…"></label>
+          <label>Cins <input name="breed" type="text"></label>
+        </div>
+        <div class="grid">
+          <label>Yaş <input name="age" type="number" min="0" step="1"></label>
+          <label>Kısırlık
+            <select name="neutered">
+              <option>Evet</option>
+              <option>Hayır</option>
+            </select>
+          </label>
+        </div>
+        <button type="submit">Ekleme İsteği Gönder</button>
+      </form>
+    </section>
+
+    <section id="view-adoptee" hidden>
+      <h2>Sahiplenme Paneli</h2>
+      <div class="actions">
+        <button id="refresh" type="button" class="secondary outline">Yenile</button>
+      </div>
+      <fieldset id="pet-list"></fieldset>
+      <form id="adoptee-form">
+        <div class="grid">
+          <label>İsim Soyisim <input name="fullName" type="text" id="adoptee-name"></label>
+          <label>Tel No <input name="phone" type="tel"></label>
+          <label>Şehir <input name="city" type="text"></label>
+        </div>
+        <button type="submit">Sahiplenme İsteği Gönder</button>
+      </form>
+    </section>
+
+    <section id="view-admin" hidden>
+      <h2>Admin Panel</h2>
+
+      <h3>Sahiplendirilecek Hayvan Kayıtları</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>İsim Soyisim</th><th>Şehir</th><th>Tel No</th><th>İsim</th>
+              <th>Tür</th><th>Cins</th><th>Yaş</th><th>Kısırlık</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="pending-body"></tbody>
+        </table>
+      </div>
+
+      <h3>Sahiplenme İstekleri</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>İsim Soyisim</th><th>Tel No</th><th>Şehir</th><th>Hayvan</th><th></th></tr>
+          </thead>
+          <tbody id="requests-body"></tbody>
+        </table>
+      </div>
+
+      <h3>Türlere Göre Sahiplendirilen Hayvan Sayısı</h3>
+      <div id="chart"></div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

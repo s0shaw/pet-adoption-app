@@ -1,0 +1,12 @@
+body { min-height: 100vh; margin: 0; padding: 1.5rem 0; background: linear-gradient(135deg, #e9eff4, #d6e4ee) fixed; }
+main.container { background: #fff; border-radius: 1rem; box-shadow: 0 1.5rem 4rem rgba(20, 50, 80, 0.28); padding: 0 2rem 2rem; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: 0 -2rem 1rem; padding: 1rem 2rem; border-bottom: 2px solid #e3e8ed; }
+.top h1 { font-size: 1.6rem; margin: 0; }
+.actions { margin-bottom: 1rem; }
+#message { min-height: 1.5rem; margin: 0.5rem 0; color: #2a7d4a; font-weight: 600; }
+#message.error { color: var(--pico-del-color); }
+#pet-list label { display: block; }
+.table-wrap { overflow-x: auto; }
+td button { margin: 0 0.25rem 0 0; padding: 0.25rem 0.6rem; }
+.bar-row { display: grid; grid-template-columns: 8rem 1fr 3rem; align-items: center; gap: 0.75rem; margin: 0.4rem 0; }
+.bar { height: 1.2rem; background: var(--pico-primary); border-radius: 0.3rem; min-width: 2px; }
